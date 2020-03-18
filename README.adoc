@@ -1,5 +1,66 @@
-= antora 模板项目
+= ra-data-spring-rest
 xiayx <xiayouxue@hotmail.com>
-v1.0, 2019-10-16: SNAPSHOT
+v1.0, 2020-03-18: SNAPSHOT
 
-查看 http://peacetrue.github.io/public/peacetrue-template-antora/index.html[详情^]
+A https://github.com/marmelab/react-admin[React-admin] data provider for backends built with Spring Framework.
+
+== Installation
+
+``npm install --save ra-data-spring-rest``
+
+== Usage
+
+[source%nowrap,javascript]
+----
+// in App.js
+import React from 'react';
+import { Admin, Resource } from 'react-admin';
+import {springDataProvider, springHttpClient} from 'ra-data-spring-rest';
+import { UserList } from './users';
+
+const dataProvider = springDataProvider('http://path.to.api/',springHttpClient());
+const App = () => (
+    <Admin dataProvider={dataProvider}>
+        <Resource name="users" list={UserList} />
+    </Admin>
+);
+
+export default App;
+----
+
+`springHttpClient()` will use ``fetch`` to send request,
+you can also use ``springHttpClient(fetchUtils.fetchJson)``
+or customize it：
+
+[source%nowrap,javascript]
+----
+let httpClient = (url, options = {}) => {
+    options.credentials = 'include';
+    return springHttpClient(url, options, fetchUtils.fetchJson)
+        .then(response => {
+            // do some thing you want
+            return response;
+        });
+};
+----
+
+== Feature
+
+This package was built to work with the default configurations of a web app using Spring Framework.
+It currently supports:
+
+* Spring URLs with path variable.
+* Sorting with ``SortHandlerMethodArgumentResolver``, using the sort query string parameter.
+* Pagination with ``PageableHandlerMethodArgumentResolver``, using the page and size query string parameters.
+
+the react-admin Data Provider request example:
+
+* GET_LIST             => GET http://my.api.url/posts?keyword=&page=0&size=10&sort=id,asc
+* GET_ONE              => GET http://my.api.url/posts/123
+* GET_MANY             => GET http://my.api.url/posts?id=1234&id=5678
+* GET_MANY_REFERENCE   => GET http://my.api.url/comments?postId=&page=0&size=10&sort=id,asc
+* CREATE               => POST http://my.api.url/posts
+* UPDATE               => PUT http://my.api.url/posts/123
+* UPDATE_MANY          => multiple call UPDATE
+* DELETE               => DELETE http://my.api.url/posts/123
+* DELETE_MANY          => multiple call DELETE

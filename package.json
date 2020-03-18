@@ -1,0 +1,31 @@
+{
+  "name": "ra-data-spring-rest",
+  "version": "1.0.0",
+  "description": "Maps react-admin queries to a REST API implemented using Spring Rest",
+  "main": "src/index.js",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peacetrue/ra-data-spring-rest.git"
+  },
+  "keywords": [
+    "react-admin",
+    "spring",
+    "rest"
+  ],
+  "author": "xiayx",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/peacetrue/ra-data-spring-rest/issues"
+  },
+  "homepage": "https://github.com/peacetrue/ra-data-spring-rest#readme",
+  "dependencies": {
+    "qs": "^6.9.1",
+    "react-admin": "^3.3.1"
+  }
+}
