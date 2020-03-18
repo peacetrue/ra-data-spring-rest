@@ -1,0 +1,9 @@
+= 简介
+
+peacetrue-template-antora 是一个基于 antora 的 xref:github-template.adoc[github 模板项目]。
+
+包含以下内容：
+
+* 文档目录 /docs 包含以下内容：
+** ``README.graffle``设计图表
+** 一个符合 https://antora.org[antora^] 要求的文档结构

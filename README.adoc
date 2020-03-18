@@ -1,0 +1,5 @@
+= antora 模板项目
+xiayx <xiayouxue@hotmail.com>
+v1.0, 2019-10-16: SNAPSHOT
+
+查看 http://peacetrue.github.io/public/peacetrue-template-antora/index.html[详情^]

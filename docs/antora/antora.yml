@@ -1,0 +1,6 @@
+name: peacetrue-template-gradle
+title: gradle 模板项目
+version: master
+start_page: ROOT:index.adoc
+nav:
+  - modules/ROOT/nav.adoc
