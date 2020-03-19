@@ -18,7 +18,8 @@ import { Admin, Resource } from 'react-admin';
 import {springDataProvider, springHttpClient} from 'ra-data-spring-rest';
 import { UserList } from './users';
 
-const dataProvider = springDataProvider('http://path.to.api/',springHttpClient());
+const httpClient = springHttpClient();
+const dataProvider = springDataProvider('http://path.to.api/',httpClient);
 const App = () => (
     <Admin dataProvider={dataProvider}>
         <Resource name="users" list={UserList} />
@@ -28,20 +29,20 @@ const App = () => (
 export default App;
 ----
 
-`springHttpClient()` will use ``fetch`` to send request,
-you can also use ``springHttpClient(fetchUtils.fetchJson)``
+`springHttpClient()` use ``fetch`` to send request, +
+you can also use ``springHttpClient(fetchUtils.fetchJson)``, +
 or customize it：
 
 [source%nowrap,javascript]
 ----
-let httpClient = (url, options = {}) => {
+let httpClient = springHttpClient((url, options = {}) => {
     options.credentials = 'include';
-    return springHttpClient(url, options, fetchUtils.fetchJson)
+    return fetchUtils.fetchJson(url, options)
         .then(response => {
             // do some thing you want
             return response;
         });
-};
+});
 ----
 
 == Feature
