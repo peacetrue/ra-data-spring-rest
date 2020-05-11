@@ -58,6 +58,7 @@ export default (apiUrl, httpClient = fetch) => {
             case GET_MANY:
                 options.method = 'GET';
                 options.params = {id: params.ids};
+                format = pageFormat;
                 break;
             case GET_MANY_REFERENCE:
                 options.method = 'GET';
